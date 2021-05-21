@@ -1,8 +1,10 @@
 """A module implementing the basic functionality of mathematical groups.
 
-This version of the module uses inheritance.
+This version of the module uses inheritance and defines the base class as an
+:class:`abc.ABC`.
 """
 
+from abc import ABC, abstractmethod
 from numbers import Integral
 import numpy as np
 
@@ -39,7 +41,7 @@ class Element:
                f"({repr(self.group), repr(self.value)})"
 
 
-class Group:
+class Group(ABC):
     """A base class containing methods common to many groups.
 
     Each subclass represents a family of parametrised groups.
@@ -53,6 +55,22 @@ class Group:
 
     def __init__(self, n):
         self.n = n
+
+    @property
+    @abstractmethod
+    def symbol(self):
+        """Represent the group name as a character."""
+        pass
+
+    @abstractmethod
+    def _validate(self, value):
+        """Ensure that value is a legitimate element value in this Group."""
+        pass
+
+    @abstractmethod
+    def operation(self, a, b):
+        """Return a ⊙ b using the group operation ⊙."""
+        pass
 
     def __call__(self, value):
         """Create an element of this group."""

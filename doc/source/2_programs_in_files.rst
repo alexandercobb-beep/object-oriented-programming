@@ -1,3 +1,5 @@
+.. _programs_files:
+
 Programs in files
 ===================
 
@@ -910,6 +912,8 @@ Exercises
     installation page <fons:python_folders>` to create the folder structure
     you will use for this course on your computer. Start with an overall folder
     for the module, and create a virtual environment in that module.
+
+.. _course_repo:
 
 .. proof:exercise::
 
